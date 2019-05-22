@@ -131,17 +131,56 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane fade" id="tab--to-do" role="tabpanel">
-                todo
+                <ul class="list-group" id="list--to-do">
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button class="btn btn-outline-success mr-1" type="button">
+                      <i
+                        style="font-size: 0.5rem; vertical-align: middle;"
+                        class="fas fa-circle px-1"
+                      ></i>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <span>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.</span
+                      >
+                    </div>
+                  </li>
+                </ul>
               </div>
               <div class="tab-pane fade" id="tab--done" role="tabpanel">
-                done
+                <ul class="list-group" id="list--done">
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button class="btn btn-outline-success mr-1" type="button">
+                      <i class="fas fa-check"></i>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <del>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.</del
+                      >
+                    </div>
+                  </li>
+                </ul>
               </div>
               <div
                 class="tab-pane fade show active"
                 id="tab--all"
                 role="tabpanel"
               >
-                <ul class="list-group">
+                <ul class="list-group" id="list--all">
                   <li
                     class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
                   >
