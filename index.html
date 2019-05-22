@@ -78,10 +78,19 @@
                   placeholder="search / add"
                 />
                 <div class="input-group-append">
-                  <button class="btn btn-outline-primary" id="input-add" type="button">
+                  <button
+                    class="btn btn-outline-primary"
+                    id="input-add"
+                    type="button"
+                  >
                     <i class="fas fa-plus"></i>
                   </button>
-                  <button disabled class="btn btn-outline-danger" id="input-clear" type="reset">
+                  <button
+                    disabled
+                    class="btn btn-outline-danger"
+                    id="input-clear"
+                    type="reset"
+                  >
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
@@ -93,12 +102,20 @@
           <div class="card my-1 my-sm-2">
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#to-do" role="tab"
+                <a
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="#tab--to-do"
+                  role="tab"
                   >To Do</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#done" role="tab"
+                <a
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="#tab--done"
+                  role="tab"
                   >Done</a
                 >
               </li>
@@ -106,20 +123,24 @@
                 <a
                   class="nav-link active"
                   data-toggle="tab"
-                  href="#all"
+                  href="#tab--all"
                   role="tab"
                   >All</a
                 >
               </li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane fade" id="to-do" role="tabpanel">
+              <div class="tab-pane fade" id="tab--to-do" role="tabpanel">
                 todo
               </div>
-              <div class="tab-pane fade" id="done" role="tabpanel">
+              <div class="tab-pane fade" id="tab--done" role="tabpanel">
                 done
               </div>
-              <div class="tab-pane fade show active" id="all" role="tabpanel">
+              <div
+                class="tab-pane fade show active"
+                id="tab--all"
+                role="tabpanel"
+              >
                 <ul class="list-group">
                   <li
                     class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
