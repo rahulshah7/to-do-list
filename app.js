@@ -34,7 +34,6 @@ inputClearEl.addEventListener("click", onInputClear);
 // To Do List
 
 toDoListToDoEl.addEventListener("click", onToDoListAction);
-toDoListAllEl.addEventListener("click", e => console.log(e.target));
 
 /* Define Event Handlers */
 
@@ -50,13 +49,43 @@ function onInput(e) {
 
 function onInputAdd(e) {
   e.preventDefault();
-  listData.push({
+  let toDo = {
     id: uuidv4(),
     task: inputTextEl.value,
     complete: false
-  });
+  };
+  listData.push(toDo);
   onInputClear();
-  console.log(listData);
+  // Render new to do item to the dom
+  const newToDoEl = document.createElement("li");
+  newToDoEl.className =
+    "list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3";
+  newToDoEl.setAttribute("data-id", toDo.id);
+  newToDoEl.innerHTML = `
+  <button
+    class="btn btn-outline-success mr-1 input-toggle-status"
+    type="button"
+  >
+    <i
+      style="font-size: 0.5rem; createElement-align: middle;"
+      class="fas fa-circle px-1"createElement
+    ></i>
+  </button>
+  <button
+    class="btn btn-outline-danger input-remove"
+    type="button"
+  >
+    <i class="fas fa-minus"></i>
+  </button>
+  <div class="ml-2 text-truncate">
+    <span class="to-do-text">
+    </span
+    >
+  </div>`;
+  toDoListToDoEl.appendChild(newToDoEl);
+  toDoListToDoEl
+    .querySelector(`[data-id="${toDo.id}"]`)
+    .querySelector("span.to-do-text").textContent = toDo.task;
 }
 
 function onInputClear(e) {
@@ -66,7 +95,7 @@ function onInputClear(e) {
 }
 
 function onToDoListAction(e) {
-  if (e.target.classList.contains("input-toggle-status")) {
+  if (e.target.classList.contains("input-remove")) {
     console.log(e.target);
   }
 }
