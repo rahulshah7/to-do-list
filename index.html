@@ -72,34 +72,36 @@
         <div class="col-lg-10 col-xl-8">
           <div class="card my-1 my-sm-2">
             <div class="card-body p-1 p-sm-3">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  id="input-text"
-                  placeholder="search / add"
-                  onfocus="this.placeholder=''"
-                  onblur="this.placeholder='search / add'"
-                  type="text"
-                />
-                <div class="input-group-append">
-                  <button
-                    disabled
-                    class="btn btn-outline-primary"
-                    id="input-add"
-                    type="button"
-                  >
-                    <i class="fas fa-plus"></i>
-                  </button>
-                  <button
-                    disabled
-                    class="btn btn-outline-danger"
-                    id="input-clear"
-                    type="reset"
-                  >
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
+              <form action="#">
+                  <div class="input-group">
+                      <input
+                        class="form-control"
+                        id="input-text"
+                        placeholder="search / add"
+                        onfocus="this.placeholder=''"
+                        onblur="this.placeholder='search / add'"
+                        type="text"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          disabled
+                          class="btn btn-outline-primary"
+                          id="input-add"
+                          type="submit"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                        <button
+                          disabled
+                          class="btn btn-outline-danger"
+                          id="input-clear"
+                          type="reset"
+                        >
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+              </form>
             </div>
           </div>
           <!-- to do list card-->
