@@ -1,168 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css"
+      integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/regular.css"
+      integrity="sha384-hCIN6p9+1T+YkCd3wWjB5yufpReULIPQ21XA/ncf3oZ631q2HEhdC7JgKqbk//4+"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css"
+      integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J"
+      crossorigin="anonymous"
+    />
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css"
-    integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/regular.css"
-    integrity="sha384-hCIN6p9+1T+YkCd3wWjB5yufpReULIPQ21XA/ncf3oZ631q2HEhdC7JgKqbk//4+" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css"
-    integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>To Do List</title>
+  </head>
+  <!-- main nav bar -->
 
-  <title>To Do List</title>
-</head>
-<!-- main nav bar -->
-<body class="bg-light">
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand" href="#">To Do List</span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav mt-3">
-        <li class="nav-item ml-auto my-2">
-          <button type="button" class="btn btn-danger" id="delete-all">
-            Delete All<i class="fas fa-trash-alt mx-1"></i>
-          </button>
-        </li>
-        <li class="nav-item ml-auto my-2" id="print-list">
-          <button type="button" class="btn btn-dark">
-            Print List<i class="fas fa-print mx-1"></i>
-          </button>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container-fluid p-0 p-sm-1 p-md-3">
-    <!-- to do input bar -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10 col-xl-8">
-        <div class="card my-1 my-sm-2">
-          <div class="card-body p-1 p-sm-3">
-            <div class="input-group">
-              <input  class="form-control" id="input-text" placeholder="search / add" type="text"/>
-              <div class="input-group-append">
-                <button disabled class="btn btn-outline-primary" id="input-add" type="button">
-                  <i class="fas fa-plus"></i>
-                </button>
-                <button disabled class="btn btn-outline-danger" id="input-clear" type="reset">
-                  <i class="fas fa-times"></i>
-                </button>
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand" href="#">To Do List</span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mt-3">
+          <li class="nav-item ml-auto my-2">
+            <button type="button" class="btn btn-danger" id="delete-all">
+              Delete All<i class="fas fa-trash-alt mx-1"></i>
+            </button>
+          </li>
+          <li class="nav-item ml-auto my-2" id="print-list">
+            <button type="button" class="btn btn-dark">
+              Print List<i class="fas fa-print mx-1"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid p-0 p-sm-1 p-md-3">
+      <!-- to do input bar -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="card my-1 my-sm-2">
+            <div class="card-body p-1 p-sm-3">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  id="input-text"
+                  placeholder="search / add"
+                  onfocus="this.placeholder=''"
+                  onblur="this.placeholder='search / add'"
+                  type="text"
+                />
+                <div class="input-group-append">
+                  <button
+                    disabled
+                    class="btn btn-outline-primary"
+                    id="input-add"
+                    type="button"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button
+                    disabled
+                    class="btn btn-outline-danger"
+                    id="input-clear"
+                    type="reset"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- to do list card-->
-        <div class="card my-1 my-sm-2">
-          <!-- card tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#tab--to-do" role="tab">To Do</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#tab--done" role="tab">Done</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#tab--all" role="tab">All</a>
-            </li>
-          </ul>
-          <!-- card tabbed contents -->
-          <div class="tab-content">
-            <div class="tab-pane fade" id="tab--to-do" role="tabpanel">
-              <ul class="list-group" id="list--to-do">
-                <li class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3">
-                  <button class="btn btn-outline-success mr-1 input-toggle-status" type="button">
-                    <i style="font-size: 0.5rem; vertical-align: middle;" class="fas fa-circle px-1"></i>
-                  </button>
-                  <button class="btn btn-outline-danger input-remove" type="button">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="ml-2 text-truncate">
-                    <span>
-                      To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                      facere obcaecati molestias nam.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="tab-pane fade" id="tab--done" role="tabpanel">
-              <ul class="list-group" id="list--done">
-                <li class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3">
-                  <button class="btn btn-outline-success mr-1" type="button">
-                    <i class="fas fa-check"></i>
-                  </button>
-                  <button class="btn btn-outline-danger" type="button">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="ml-2 text-truncate">
-                    <del>
-                      To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                      facere obcaecati molestias nam.</del>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="tab-pane fade show active" id="tab--all" role="tabpanel">
-              <ul class="list-group" id="list--all">
-                <li class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3">
-                  <button class="btn btn-outline-success mr-1" type="button">
-                    <i style="font-size: 0.5rem; vertical-align: middle;" class="fas fa-circle px-1"></i>
-                  </button>
-                  <button class="btn btn-outline-danger" type="button">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="ml-2 text-truncate">
-                    <span>
-                      To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                      facere obcaecati molestias nam.</span>
-                  </div>
-                </li>
-                <li class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3">
-                  <button class="btn btn-outline-success mr-1" type="button">
-                    <i class="fas fa-check"></i>
-                  </button>
-                  <button class="btn btn-outline-danger" type="button">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <div class="ml-2 text-truncate">
-                    <del>
-                      To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                      facere obcaecati molestias nam.
-                    </del>
-                  </div>
-                </li>
-              </ul>
+          <!-- to do list card-->
+          <div class="card my-1 my-sm-2">
+            <!-- card tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="#tab--to-do"
+                  role="tab"
+                  >To Do</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="#tab--done"
+                  role="tab"
+                  >Done</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  data-toggle="tab"
+                  href="#tab--all"
+                  role="tab"
+                  >All</a
+                >
+              </li>
+            </ul>
+            <!-- card tabbed contents -->
+            <div class="tab-content">
+              <div class="tab-pane fade" id="tab--to-do" role="tabpanel">
+                <ul class="list-group" id="list--to-do">
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button
+                      class="btn btn-outline-success mr-1 input-toggle-status"
+                      type="button"
+                    >
+                      <i
+                        style="font-size: 0.5rem; vertical-align: middle;"
+                        class="fas fa-circle px-1"
+                      ></i>
+                    </button>
+                    <button
+                      class="btn btn-outline-danger input-remove"
+                      type="button"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <span>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.</span
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-pane fade" id="tab--done" role="tabpanel">
+                <ul class="list-group" id="list--done">
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button class="btn btn-outline-success mr-1" type="button">
+                      <i class="fas fa-check"></i>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <del>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.
+                      </del>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="tab-pane fade show active"
+                id="tab--all"
+                role="tabpanel"
+              >
+                <ul class="list-group" id="list--all">
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button class="btn btn-outline-success mr-1" type="button">
+                      <i
+                        style="font-size: 0.5rem; vertical-align: middle;"
+                        class="fas fa-circle px-1"
+                      ></i>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <span>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.</span
+                      >
+                    </div>
+                  </li>
+                  <li
+                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
+                  >
+                    <button class="btn btn-outline-success mr-1" type="button">
+                      <i class="fas fa-check"></i>
+                    </button>
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <div class="ml-2 text-truncate">
+                      <del>
+                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
+                        facere obcaecati molestias nam.
+                      </del>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <!-- Appk JavaScript -->
-  <script src="app.js"></script>
-</body>
-
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Appk JavaScript -->
+    <script src="app.js"></script>
+  </body>
 </html>
