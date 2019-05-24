@@ -1,6 +1,6 @@
 "use strict";
 
-const listData = [
+let listData = [
   {
     task: "Mow lawn",
     complete: false
@@ -96,7 +96,10 @@ function onInputClear(e) {
 
 function onToDoListAction(e) {
   if (e.target.classList.contains("input-remove")) {
-    console.log(e.target);
+    listData = listData.filter(
+      toDo => toDo.id !== e.target.parentElement.getAttribute("data-id")
+    );
+    e.target.parentElement.remove();
   }
 }
 
