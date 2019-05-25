@@ -17,7 +17,7 @@ function storeData(data) {
 }
 
 /* Filter Criteria */
-let searchTerm = "";
+let searchTerm = null;
 let activeStatusTab = "to-do";
 
 /* Select UI Elements */
@@ -53,7 +53,7 @@ PrintListEl.addEventListener("click", e =>
 );
 
 // Input Card
-inputTextEl.addEventListener("keyup", onTextInput);
+inputTextEl.addEventListener("input", onTextInput);
 inputAddEl.addEventListener("click", onInputAdd);
 inputClearEl.addEventListener("click", onInputClear);
 
@@ -99,14 +99,14 @@ function onInputAdd(e) {
   listData.push(toDo);
   storeData(listData);
   onInputClear();
-  renderToDoEls({ activeStatusTab });
 }
 
 function onInputClear(e) {
-  inputTextEl.value = "";
+  inputTextEl.value = null;
+  searchTerm = null;
+  renderToDoEls(searchTerm, activeStatusTab);
   inputAddEl.setAttribute("disabled", "true");
   inputClearEl.setAttribute("disabled", "true");
-  renderToDoEls({ activeStatusTab });
 }
 
 function onRemove(e) {
