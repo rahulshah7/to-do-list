@@ -1,6 +1,8 @@
 "use strict";
 
-let listData = [];
+const listData = [];
+let searchTerm = "";
+let activeStatusTab = "to-do";
 
 /* Select UI Elements */
 
@@ -24,7 +26,7 @@ const toDoListToDoEl = document.querySelector("#list--to-do");
 /* Attach Event Listeners */
 
 window.addEventListener("DOMContentLoaded", e => {
-  renderToDoEls();
+  renderToDoEls({ activeStatusTab });
 });
 
 DeleteAllEl.addEventListener("click", e =>
@@ -39,11 +41,19 @@ inputTextEl.addEventListener("keyup", onTextInput);
 inputAddEl.addEventListener("click", onInputAdd);
 inputClearEl.addEventListener("click", onInputClear);
 
-// To Do Tabs
-let activeTabFilter = "to-do";
-toDoTabEl.addEventListener("click", e => (activeTabFilter = "to-do"));
-doneTabEl.addEventListener("click", e => (activeTabFilter = "done"));
-allTabEl.addEventListener("click", e => (activeTabFilter = "all"));
+// Complete Status Tabs
+toDoTabEl.addEventListener("click", e => {
+  activeStatusTab = "to-do";
+  renderToDoEls(searchTerm, activeStatusTab);
+});
+doneTabEl.addEventListener("click", e => {
+  activeStatusTab = "done";
+  renderToDoEls(searchTerm, activeStatusTab);
+});
+allTabEl.addEventListener("click", e => {
+  activeStatusTab = "all";
+  renderToDoEls(searchTerm, activeStatusTab);
+});
 
 // To Do List
 toDoListToDoEl.addEventListener("click", onRemove);
@@ -52,14 +62,15 @@ toDoListToDoEl.addEventListener("click", onToggleStatus);
 /* Define Event Handlers */
 
 function onTextInput(e) {
-  if (e.target.value === "") {
+  searchTerm = e.target.value;
+  if (searchTerm === "") {
     inputAddEl.setAttribute("disabled", "true");
     inputClearEl.setAttribute("disabled", "true");
   } else {
     inputAddEl.removeAttribute("disabled");
     inputClearEl.removeAttribute("disabled");
   }
-  renderToDoEls(e.target.value);
+  renderToDoEls(searchTerm, activeStatusTab);
 }
 
 function onInputAdd(e) {
@@ -67,18 +78,18 @@ function onInputAdd(e) {
   let toDo = {
     id: uuidv4(),
     task: inputTextEl.value,
-    completeStatus: false
+    isComplete: false
   };
   listData.push(toDo);
   onInputClear();
-  renderToDoEls();
+  renderToDoEls({ activeStatusTab });
 }
 
 function onInputClear(e) {
   inputTextEl.value = "";
   inputAddEl.setAttribute("disabled", "true");
   inputClearEl.setAttribute("disabled", "true");
-  renderToDoEls();
+  renderToDoEls({ activeStatusTab });
 }
 
 function onRemove(e) {
@@ -94,16 +105,17 @@ function onToggleStatus(e) {
   if (e.target.classList.contains("input-toggle-status")) {
     listData.map(toDo => {
       if (toDo.id == e.target.parentElement.getAttribute("data-id")) {
-        toDo.completeStatus = !toDo.completeStatus;
+        toDo.isComplete = !toDo.isComplete;
         // Toggle text strike through in DOM
         toDoListToDoEl.querySelector(
           `[data-id="${toDo.id}"] .to-do-text`
-        ).innerHTML = `<${toDo.completeStatus ? "del" : "span"}>${toDo.task}</${
-          toDo.completeStatus ? "del" : "span"
+        ).innerHTML = `<${toDo.isComplete ? "del" : "span"}>${toDo.task}</${
+          toDo.isComplete ? "del" : "span"
         }>`;
       }
     });
   }
+  renderToDoEls(searchTerm, activeStatusTab);
 }
 
 /* Define Helpers */
@@ -141,8 +153,8 @@ function addToDoEl(toDo) {
   </button>
   <div class="ml-2 text-truncate">
     <span class="to-do-text">
-      <${toDo.completeStatus ? "del" : "span"}>
-      </${toDo.completeStatus ? "del" : "span"}>
+      <${toDo.isComplete ? "del" : "span"}>
+      </${toDo.isComplete ? "del" : "span"}>
     </span>
   </div>`;
   toDoListToDoEl.appendChild(newToDoEl);
@@ -151,24 +163,29 @@ function addToDoEl(toDo) {
     .querySelector(".to-do-text > *").textContent = toDo.task;
 }
 
-function renderToDoEls(searchTerm) {
+function renderToDoEls(searchTerm, activeStatusTab) {
+  let filteredListData = listData;
   if (searchTerm) {
     // filter data
-    const filteredListData = listData.filter(toDo =>
+    filteredListData = filteredListData.filter(toDo =>
       toDo.task.toLowerCase().includes(searchTerm)
     );
-
-    // remove all To Do elements from DOM
-    while (toDoListToDoEl.firstChild) {
-      toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
-    }
-
-    // append filter list elements
-    filteredListData.forEach(toDo => addToDoEl(toDo));
-  } else {
-    while (toDoListToDoEl.firstChild) {
-      toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
-    }
-    listData.forEach(toDo => addToDoEl(toDo));
   }
+
+  if (activeStatusTab) {
+    // filter data
+    filteredListData = filteredListData.filter(toDo => {
+      if (activeStatusTab == "to-do") return toDo.isComplete == false;
+      if (activeStatusTab == "done") return toDo.isComplete == true;
+      if (activeStatusTab == "all") return toDo;
+    });
+  }
+
+  // remove all To Do elements from DOM
+  while (toDoListToDoEl.firstChild) {
+    toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
+  }
+
+  // append filter list elements
+  filteredListData.forEach(toDo => addToDoEl(toDo));
 }
