@@ -21,8 +21,7 @@ window.addEventListener("DOMContentLoaded", e => {
 });
 
 // Input Card
-inputTextEl.addEventListener("input", onInput);
-inputTextEl.addEventListener("keyup", onKeyup);
+inputTextEl.addEventListener("keyup", onTextInput);
 inputAddEl.addEventListener("click", onInputAdd);
 inputClearEl.addEventListener("click", onInputClear);
 
@@ -33,18 +32,14 @@ toDoListToDoEl.addEventListener("click", onToggleStatus);
 
 /* Define Event Handlers */
 
-function onInput(e) {
+function onTextInput(e) {
   if (e.target.value === "") {
     inputAddEl.setAttribute("disabled", "true");
     inputClearEl.setAttribute("disabled", "true");
   } else {
     inputAddEl.removeAttribute("disabled");
     inputClearEl.removeAttribute("disabled");
-    renderToDoEls(e.target.value);
   }
-}
-
-function onKeyup(e) {
   renderToDoEls(e.target.value);
 }
 
