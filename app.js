@@ -57,35 +57,7 @@ function onInputAdd(e) {
   };
   listData.push(toDo);
   onInputClear();
-  // Render new to do item to the dom
-  const newToDoEl = document.createElement("li");
-  newToDoEl.className =
-    "list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3";
-  newToDoEl.setAttribute("data-id", toDo.id);
-  newToDoEl.innerHTML = `
-  <button
-    class="btn btn-outline-success mr-1 input-toggle-status"
-    type="button"
-  >
-    <i
-      class="fas fa-check"
-    ></i>
-  </button>
-  <button
-    class="btn btn-outline-danger input-remove"
-    type="button"
-  >
-    <i class="fas fa-minus"></i>
-  </button>
-  <div class="ml-2 text-truncate">
-    <span class="to-do-text">
-    </span
-    >
-  </div>`;
-  toDoListToDoEl.appendChild(newToDoEl);
-  toDoListToDoEl
-    .querySelector(`[data-id="${toDo.id}"]`)
-    .querySelector("span.to-do-text").textContent = toDo.task;
+  addToDoEl(toDo);
 }
 
 function onInputClear(e) {
@@ -133,4 +105,36 @@ function uuidv4() {
       (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
     ).toString(16)
   );
+}
+
+function addToDoEl(toDo) {
+  // Render to do item to the dom
+  const newToDoEl = document.createElement("li");
+  newToDoEl.className =
+    "list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3";
+  newToDoEl.setAttribute("data-id", toDo.id);
+  newToDoEl.innerHTML = `
+  <button
+    class="btn btn-outline-success mr-1 input-toggle-status"
+    type="button"
+  >
+    <i
+      class="fas fa-check"
+    ></i>
+  </button>
+  <button
+    class="btn btn-outline-danger input-remove"
+    type="button"
+  >
+    <i class="fas fa-minus"></i>
+  </button>
+  <div class="ml-2 text-truncate">
+    <span class="to-do-text">
+    </span
+    >
+  </div>`;
+  toDoListToDoEl.appendChild(newToDoEl);
+  toDoListToDoEl
+    .querySelector(`[data-id="${toDo.id}"]`)
+    .querySelector("span.to-do-text").textContent = toDo.task;
 }
