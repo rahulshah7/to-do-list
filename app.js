@@ -1,16 +1,6 @@
 "use strict";
 
-let listData = [
-  {
-    task: "Mow lawn",
-    status: false
-  },
-  {
-    task:
-      "blah blah blah blah blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah",
-    status: true
-  }
-];
+let listData = [];
 
 /* Select UI Elements */
 
@@ -26,8 +16,13 @@ const toDoListAllEl = document.querySelector("#list--all");
 
 /* Attach Event Listeners */
 
+window.addEventListener("DOMContentLoaded", e => {
+  renderAllToDoEls();
+});
+
 // Input Card
 inputTextEl.addEventListener("input", onInput);
+inputTextEl.addEventListener("keyup", onKeyup);
 inputAddEl.addEventListener("click", onInputAdd);
 inputClearEl.addEventListener("click", onInputClear);
 
@@ -49,22 +44,27 @@ function onInput(e) {
   }
 }
 
+function onKeyup(e) {
+  filterToDoEls(e.target.value);
+}
+
 function onInputAdd(e) {
   e.preventDefault();
   let toDo = {
     id: uuidv4(),
     task: inputTextEl.value,
-    status: false
+    completeStatus: false
   };
   listData.push(toDo);
   onInputClear();
-  addToDoEl(toDo);
+  renderAllToDoEls();
 }
 
 function onInputClear(e) {
   inputTextEl.value = "";
   inputAddEl.setAttribute("disabled", "true");
   inputClearEl.setAttribute("disabled", "true");
+  renderAllToDoEls();
 }
 
 function onRemove(e) {
@@ -80,9 +80,9 @@ function onToggleStatus(e) {
   if (e.target.classList.contains("input-toggle-status")) {
     listData.map(toDo => {
       if (toDo.id == e.target.parentElement.getAttribute("data-id")) {
-        toDo.status = !toDo.status;
+        toDo.completeStatus = !toDo.completeStatus;
         // Toggle text strike through in DOM
-        if (toDo.status) {
+        if (toDo.completeStatus) {
           toDoListToDoEl.querySelector("span.to-do-text").innerHTML = `<del>${
             toDo.task
           }</del>`;
@@ -141,16 +141,25 @@ function addToDoEl(toDo) {
 }
 
 function filterToDoEls(searchTerm) {
-  // filter data
-  const filteredListData = listData.filter(toDo =>
-    toDo.task.toLowerCase().includes(searchTerm)
-  );
+  if (searchTerm !== "") {
+    // filter data
+    const filteredListData = listData.filter(toDo =>
+      toDo.task.toLowerCase().includes(searchTerm)
+    );
 
-  // remove all To Do elements from DOM
+    // remove all To Do elements from DOM
+    while (toDoListToDoEl.firstChild) {
+      toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
+    }
+
+    // append filter list elements
+    filteredListData.forEach(toDo => addToDoEl(toDo));
+  }
+}
+
+function renderAllToDoEls() {
   while (toDoListToDoEl.firstChild) {
     toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
   }
-
-  // append filter list elements
-  filteredListData.forEach(toDo => addToDoEl(toDo));
+  listData.forEach(toDo => addToDoEl(toDo));
 }
