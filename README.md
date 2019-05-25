@@ -1,2 +1,4 @@
 # to-do-list
-JavaScript To Do List App
+JavaScript and Bootstrap4 - To Do List App
+
+Live Demo: https://rahulshah7.github.io/to-do-list/
