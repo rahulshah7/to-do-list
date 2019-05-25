@@ -1,6 +1,22 @@
 "use strict";
 
-const listData = [];
+/* Set up data store */
+let listData = storeData();
+
+function storeData(data) {
+  const storeKey = "to-do list";
+  if (!JSON.parse(localStorage.getItem(storeKey))) {
+    localStorage.setItem(storeKey, JSON.stringify([]));
+  }
+
+  if (data) {
+    data = JSON.stringify(data);
+    localStorage.setItem(storeKey, data);
+  }
+  return JSON.parse(localStorage.getItem(storeKey));
+}
+
+/* Filter Criteria */
 let searchTerm = "";
 let activeStatusTab = "to-do";
 
@@ -26,7 +42,7 @@ const toDoListToDoEl = document.querySelector("#list--to-do");
 /* Attach Event Listeners */
 
 window.addEventListener("DOMContentLoaded", e => {
-  renderToDoEls({ activeStatusTab });
+  renderToDoEls(searchTerm, activeStatusTab);
 });
 
 DeleteAllEl.addEventListener("click", e =>
@@ -81,6 +97,7 @@ function onInputAdd(e) {
     isComplete: false
   };
   listData.push(toDo);
+  storeData(listData);
   onInputClear();
   renderToDoEls({ activeStatusTab });
 }
@@ -97,6 +114,7 @@ function onRemove(e) {
     listData = listData.filter(
       toDo => toDo.id !== e.target.parentElement.getAttribute("data-id")
     );
+    storeData(listData);
     e.target.parentElement.remove();
   }
 }
@@ -115,6 +133,7 @@ function onToggleStatus(e) {
       }
     });
   }
+  storeData(listData);
   renderToDoEls(searchTerm, activeStatusTab);
 }
 
