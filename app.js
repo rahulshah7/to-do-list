@@ -129,7 +129,7 @@ function onToggleStatus(e) {
           `[data-id="${toDo.id}"] .to-do-text`
         ).innerHTML = `<${toDo.isComplete ? "del" : "span"}>${toDo.task}</${
           toDo.isComplete ? "del" : "span"
-        }>`;
+          }>`;
       }
     });
   }
@@ -187,7 +187,7 @@ function renderToDoEls(searchTerm, activeStatusTab) {
   if (searchTerm) {
     // filter data
     filteredListData = filteredListData.filter(toDo =>
-      toDo.task.toLowerCase().includes(searchTerm)
+      toDo.task.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
