@@ -82,15 +82,11 @@ function onToggleStatus(e) {
       if (toDo.id == e.target.parentElement.getAttribute("data-id")) {
         toDo.completeStatus = !toDo.completeStatus;
         // Toggle text strike through in DOM
-        if (toDo.completeStatus) {
-          toDoListToDoEl.querySelector("span.to-do-text").innerHTML = `<del>${
-            toDo.task
-          }</del>`;
-        } else {
-          toDoListToDoEl.querySelector("span.to-do-text").innerHTML = `${
-            toDo.task
-          }`;
-        }
+        toDoListToDoEl.querySelector(
+          `[data-id="${toDo.id}"] .to-do-text`
+        ).innerHTML = `<${toDo.completeStatus ? "del" : "span"}>${toDo.task}</${
+          toDo.completeStatus ? "del" : "span"
+        }>`;
       }
     });
   }
@@ -131,13 +127,14 @@ function addToDoEl(toDo) {
   </button>
   <div class="ml-2 text-truncate">
     <span class="to-do-text">
-    </span
-    >
+      <${toDo.completeStatus ? "del" : "span"}>
+      </${toDo.completeStatus ? "del" : "span"}>
+    </span>
   </div>`;
   toDoListToDoEl.appendChild(newToDoEl);
   toDoListToDoEl
     .querySelector(`[data-id="${toDo.id}"]`)
-    .querySelector("span.to-do-text").textContent = toDo.task;
+    .querySelector(".to-do-text > *").textContent = toDo.task;
 }
 
 function renderToDoEls(searchTerm) {
