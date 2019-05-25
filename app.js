@@ -8,15 +8,18 @@ let listData = [];
 const DeleteAllEl = document.querySelector("#delete-all");
 const PrintListEl = document.querySelector("#print-list");
 
-// Input Card
+// Input Card Tabs
+const toDoTabEl = document.querySelector("#tab--to-do");
+const doneTabEl = document.querySelector("#tab--done");
+const allTabEl = document.querySelector("#tab--all");
+
+// Input Card Items
 const inputTextEl = document.querySelector("#input-text");
 const inputAddEl = document.querySelector("#input-add");
 const inputClearEl = document.querySelector("#input-clear");
 
 // To Do List
 const toDoListToDoEl = document.querySelector("#list--to-do");
-const toDoListDoneEl = document.querySelector("#list--done");
-const toDoListAllEl = document.querySelector("#list--all");
 
 /* Attach Event Listeners */
 
@@ -36,8 +39,13 @@ inputTextEl.addEventListener("keyup", onTextInput);
 inputAddEl.addEventListener("click", onInputAdd);
 inputClearEl.addEventListener("click", onInputClear);
 
-// To Do List
+// To Do Tabs
+let activeTabFilter = "to-do";
+toDoTabEl.addEventListener("click", e => (activeTabFilter = "to-do"));
+doneTabEl.addEventListener("click", e => (activeTabFilter = "done"));
+allTabEl.addEventListener("click", e => (activeTabFilter = "all"));
 
+// To Do List
 toDoListToDoEl.addEventListener("click", onRemove);
 toDoListToDoEl.addEventListener("click", onToggleStatus);
 

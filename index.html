@@ -35,7 +35,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="./custom.css" />
 
     <title>To Do List</title>
   </head>
@@ -43,7 +43,7 @@
 
   <body class="bg-light">
     <nav class="navbar navbar-dark bg-dark">
-      <span class="navbar-brand" href="#">To Do List</span>
+      <span class="navbar-brand">To Do List</span>
       <button
         class="navbar-toggler"
         type="button"
@@ -74,35 +74,35 @@
           <div class="card my-1 my-sm-2">
             <div class="card-body p-1 p-sm-3">
               <form action="#">
-                  <div class="input-group">
-                      <input
-                        autocomplete="off"
-                        class="form-control"
-                        id="input-text"
-                        placeholder="search / add"
-                        onfocus="this.placeholder=''"
-                        onblur="this.placeholder='search / add'"
-                        type="text"
-                      />
-                      <div class="input-group-append">
-                        <button
-                          disabled
-                          class="btn btn-outline-primary"
-                          id="input-add"
-                          type="submit"
-                        >
-                          <i class="fas fa-plus"></i>
-                        </button>
-                        <button
-                          disabled
-                          class="btn btn-outline-danger"
-                          id="input-clear"
-                          type="reset"
-                        >
-                          <i class="fas fa-times"></i>
-                        </button>
-                      </div>
-                    </div>
+                <div class="input-group">
+                  <input
+                    autocomplete="off"
+                    class="form-control"
+                    id="input-text"
+                    placeholder="search / add"
+                    onfocus="this.placeholder=''"
+                    onblur="this.placeholder='search / add'"
+                    type="text"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      disabled
+                      class="btn btn-outline-primary"
+                      id="input-add"
+                      type="submit"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    <button
+                      disabled
+                      class="btn btn-outline-danger"
+                      id="input-clear"
+                      type="reset"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -114,101 +114,26 @@
                 <a
                   class="nav-link active"
                   data-toggle="tab"
-                  href="#tab--to-do"
+                  id="tab--to-do"
                   role="tab"
                   >To Do</a
                 >
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-toggle="tab"
-                  href="#tab--done"
-                  role="tab"
+                <a class="nav-link" data-toggle="tab" id="tab--done" role="tab"
                   >Done</a
                 >
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-toggle="tab"
-                  href="#tab--all"
-                  role="tab"
+                <a class="nav-link" data-toggle="tab" id="tab--all" role="tab"
                   >All</a
                 >
               </li>
             </ul>
             <!-- card tabbed contents -->
             <div class="tab-content">
-              <div class="tab-pane fade show active" id="tab--to-do" role="tabpanel">
-                <ul class="list-group" id="list--to-do">
-                </ul>
-              </div>
-              <div class="tab-pane fade" id="tab--done" role="tabpanel">
-                <ul class="list-group" id="list--done">
-                  <li
-                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
-                  >
-                    <button class="btn btn-outline-success mr-1" type="button">
-                      <i class="fas fa-check"></i>
-                    </button>
-                    <button class="btn btn-outline-danger" type="button">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <div class="ml-2 text-truncate">
-                      <del>
-                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                        facere obcaecati molestias nam.
-                      </del>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="tab--all"
-                role="tabpanel"
-              >
-                <ul class="list-group" id="list--all">
-                  <li
-                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
-                  >
-                    <button class="btn btn-outline-success mr-1" type="button">
-                      <i
-                        style="font-size: 0.5rem; vertical-align: middle;"
-                        class="fas fa-circle px-1"
-                      ></i>
-                    </button>
-                    <button class="btn btn-outline-danger" type="button">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <div class="ml-2 text-truncate">
-                      <span>
-                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                        facere obcaecati molestias nam.</span
-                      >
-                    </div>
-                  </li>
-                  <li
-                    class="list-group-item d-flex align-items-center p-1 py-sm-2 px-sm-3"
-                  >
-                    <button class="btn btn-outline-success mr-1" type="button">
-                      <i class="fas fa-check"></i>
-                    </button>
-                    <button class="btn btn-outline-danger" type="button">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <div class="ml-2 text-truncate">
-                      <del>
-                        To Do Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Maxime iure nulla sed eligendi. Amet, quam autem
-                        facere obcaecati molestias nam.
-                      </del>
-                    </div>
-                  </li>
-                </ul>
+              <div class="tab-pane show active" role="tabpanel">
+                <ul class="list-group" id="list--to-do"></ul>
               </div>
             </div>
           </div>
