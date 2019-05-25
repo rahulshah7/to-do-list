@@ -3,12 +3,12 @@
 let listData = [
   {
     task: "Mow lawn",
-    complete: false
+    status: false
   },
   {
     task:
       "blah blah blah blah blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah",
-    complete: true
+    status: true
   }
 ];
 
@@ -53,7 +53,7 @@ function onInputAdd(e) {
   let toDo = {
     id: uuidv4(),
     task: inputTextEl.value,
-    complete: false
+    status: false
   };
   listData.push(toDo);
   onInputClear();
