@@ -3,6 +3,11 @@ button > * {
   pointer-events: none;
 }
 
+/* Over ride Bootstrap z-index */
+nav.navbar {
+  z-index: 2000;
+}
+
 /* Media Queries for fixed element positioning */
 #input-container {
   margin-top: 3rem;
