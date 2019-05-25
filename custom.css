@@ -1,3 +1,34 @@
+/* Make FA Icons unclickable */
 button > * {
   pointer-events: none;
 }
+
+/* Media Queries for fixed element positioning */
+#input-container {
+  margin-top: 3rem;
+}
+
+#list-container {
+  margin-top: 6rem;
+}
+
+@media (min-width: 576px) {
+  #list-container {
+    margin-top: 7.5rem;
+  }
+ }
+
+@media (min-width: 768px) {
+  #input-container {
+    padding-top: 1rem;
+    margin-top: 3rem;
+  }
+
+  #list-container {
+    margin-top: 9.5rem;
+  }
+ }
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }
