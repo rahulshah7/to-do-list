@@ -108,6 +108,16 @@ function onToggleStatus(e) {
     listData.map(toDo => {
       if (toDo.id == e.target.parentElement.getAttribute("data-id")) {
         toDo.status = !toDo.status;
+        // Toggle text strike through in DOM
+        if (toDo.status) {
+          toDoListToDoEl.querySelector("span.to-do-text").innerHTML = `<del>${
+            toDo.task
+          }</del>`;
+        } else {
+          toDoListToDoEl.querySelector("span.to-do-text").innerHTML = `${
+            toDo.task
+          }`;
+        }
       }
     });
   }
