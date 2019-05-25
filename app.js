@@ -45,6 +45,7 @@ function onInput(e) {
   } else {
     inputAddEl.removeAttribute("disabled");
     inputClearEl.removeAttribute("disabled");
+    filterToDoEls(e.target.value);
   }
 }
 
@@ -137,4 +138,19 @@ function addToDoEl(toDo) {
   toDoListToDoEl
     .querySelector(`[data-id="${toDo.id}"]`)
     .querySelector("span.to-do-text").textContent = toDo.task;
+}
+
+function filterToDoEls(searchTerm) {
+  // filter data
+  const filteredListData = listData.filter(toDo =>
+    toDo.task.toLowerCase().includes(searchTerm)
+  );
+
+  // remove all To Do elements from DOM
+  while (toDoListToDoEl.firstChild) {
+    toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
+  }
+
+  // append filter list elements
+  filteredListData.forEach(toDo => addToDoEl(toDo));
 }
