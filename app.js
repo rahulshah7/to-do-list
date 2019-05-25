@@ -37,7 +37,7 @@ const inputAddEl = document.querySelector("#input-add");
 const inputClearEl = document.querySelector("#input-clear");
 
 // To Do List
-const toDoListToDoEl = document.querySelector("#list--to-do");
+const toDoListToDoEl = document.querySelector("#to-do-list");
 
 /* Attach Event Listeners */
 
