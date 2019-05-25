@@ -17,7 +17,7 @@ const toDoListAllEl = document.querySelector("#list--all");
 /* Attach Event Listeners */
 
 window.addEventListener("DOMContentLoaded", e => {
-  renderAllToDoEls();
+  renderToDoEls();
 });
 
 // Input Card
@@ -40,12 +40,12 @@ function onInput(e) {
   } else {
     inputAddEl.removeAttribute("disabled");
     inputClearEl.removeAttribute("disabled");
-    filterToDoEls(e.target.value);
+    renderToDoEls(e.target.value);
   }
 }
 
 function onKeyup(e) {
-  filterToDoEls(e.target.value);
+  renderToDoEls(e.target.value);
 }
 
 function onInputAdd(e) {
@@ -57,14 +57,14 @@ function onInputAdd(e) {
   };
   listData.push(toDo);
   onInputClear();
-  renderAllToDoEls();
+  renderToDoEls();
 }
 
 function onInputClear(e) {
   inputTextEl.value = "";
   inputAddEl.setAttribute("disabled", "true");
   inputClearEl.setAttribute("disabled", "true");
-  renderAllToDoEls();
+  renderToDoEls();
 }
 
 function onRemove(e) {
@@ -140,8 +140,8 @@ function addToDoEl(toDo) {
     .querySelector("span.to-do-text").textContent = toDo.task;
 }
 
-function filterToDoEls(searchTerm) {
-  if (searchTerm !== "") {
+function renderToDoEls(searchTerm) {
+  if (searchTerm) {
     // filter data
     const filteredListData = listData.filter(toDo =>
       toDo.task.toLowerCase().includes(searchTerm)
@@ -154,12 +154,10 @@ function filterToDoEls(searchTerm) {
 
     // append filter list elements
     filteredListData.forEach(toDo => addToDoEl(toDo));
+  } else {
+    while (toDoListToDoEl.firstChild) {
+      toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
+    }
+    listData.forEach(toDo => addToDoEl(toDo));
   }
-}
-
-function renderAllToDoEls() {
-  while (toDoListToDoEl.firstChild) {
-    toDoListToDoEl.removeChild(toDoListToDoEl.firstChild);
-  }
-  listData.forEach(toDo => addToDoEl(toDo));
 }
