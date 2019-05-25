@@ -33,7 +33,8 @@ inputClearEl.addEventListener("click", onInputClear);
 
 // To Do List
 
-toDoListToDoEl.addEventListener("click", onToDoListAction);
+toDoListToDoEl.addEventListener("click", onRemove);
+toDoListToDoEl.addEventListener("click", onToggleStatus);
 
 /* Define Event Handlers */
 
@@ -94,13 +95,24 @@ function onInputClear(e) {
   inputClearEl.setAttribute("disabled", "true");
 }
 
-function onToDoListAction(e) {
+function onRemove(e) {
   if (e.target.classList.contains("input-remove")) {
     listData = listData.filter(
       toDo => toDo.id !== e.target.parentElement.getAttribute("data-id")
     );
     e.target.parentElement.remove();
   }
+}
+
+function onToggleStatus(e) {
+  if (e.target.classList.contains("input-toggle-status")) {
+    listData.map(toDo => {
+      if (toDo.id == e.target.parentElement.getAttribute("data-id")) {
+        toDo.status = !toDo.status;
+      }
+    });
+  }
+  console.log(listData);
 }
 
 /* Define Helpers */
