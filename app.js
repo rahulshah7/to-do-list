@@ -4,6 +4,10 @@ let listData = [];
 
 /* Select UI Elements */
 
+// Menu
+const DeleteAllEl = document.querySelector("#delete-all");
+const PrintListEl = document.querySelector("#print-list");
+
 // Input Card
 const inputTextEl = document.querySelector("#input-text");
 const inputAddEl = document.querySelector("#input-add");
@@ -19,6 +23,13 @@ const toDoListAllEl = document.querySelector("#list--all");
 window.addEventListener("DOMContentLoaded", e => {
   renderToDoEls();
 });
+
+DeleteAllEl.addEventListener("click", e =>
+  alert("This feature has not been implemented!")
+);
+PrintListEl.addEventListener("click", e =>
+  alert("This feature has not been implemented!")
+);
 
 // Input Card
 inputTextEl.addEventListener("keyup", onTextInput);
