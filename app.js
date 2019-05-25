@@ -68,8 +68,7 @@ function onInputAdd(e) {
     type="button"
   >
     <i
-      style="font-size: 0.5rem; createElement-align: middle;"
-      class="fas fa-circle px-1"createElement
+      class="fas fa-check"
     ></i>
   </button>
   <button
@@ -112,7 +111,6 @@ function onToggleStatus(e) {
       }
     });
   }
-  console.log(listData);
 }
 
 /* Define Helpers */
